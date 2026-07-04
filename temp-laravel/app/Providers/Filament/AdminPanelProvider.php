@@ -2,6 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\SecurityHeaders;
+use App\Filament\Widgets\DashboardStatsOverview;
+use App\Filament\Widgets\RecentPostsTable;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -37,6 +40,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+                DashboardStatsOverview::class,
+                RecentPostsTable::class,
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
@@ -48,6 +53,7 @@ class AdminPanelProvider extends PanelProvider
                 ShareErrorsFromSession::class,
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
+                SecurityHeaders::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])

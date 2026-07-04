@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,12 +17,25 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@gmail.com'],
+            ['email' => 'admin@example.com'],
             [
                 'name' => 'Admin',
                 'password' => '123456',
                 'email_verified_at' => now(),
             ]
         );
+
+        Category::updateOrCreate(
+            ['slug' => 'tin-tuc'],
+            [
+                'name' => 'Tin tuc',
+                'parent_id' => null,
+            ]
+        );
+
+        $this->call([
+            ProjectSeeder::class,
+            PostSeeder::class,
+        ]);
     }
 }

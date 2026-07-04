@@ -27,15 +27,17 @@ class SecurityHeaders
 
         $styleSrc = $isAdminSurface
             ? "'self' 'unsafe-inline' https://fonts.bunny.net"
-            : "'self' 'unsafe-inline'";
+            : "'self' 'unsafe-inline' https://fonts.bunny.net";
 
         $fontSrc = $isAdminSurface
             ? "'self' data: https://fonts.bunny.net"
-            : "'self' data:";
+            : "'self' data: https://fonts.bunny.net";
 
         $imgSrc = $isAdminSurface
             ? "'self' data: blob: https://ui-avatars.com"
             : "'self' data: blob:";
+
+        $connectSrc = "'self'";
 
         $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
@@ -43,7 +45,7 @@ class SecurityHeaders
         $response->headers->set('X-XSS-Protection', '0');
         $response->headers->set(
             'Content-Security-Policy',
-            "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; img-src {$imgSrc}; media-src 'self' blob:; style-src {$styleSrc}; font-src {$fontSrc}; script-src {$scriptSrc}"
+            "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; img-src {$imgSrc}; media-src 'self' blob:; style-src {$styleSrc}; font-src {$fontSrc}; script-src {$scriptSrc}; connect-src {$connectSrc}"
         );
 
         return $response;

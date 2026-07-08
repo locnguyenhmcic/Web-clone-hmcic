@@ -365,15 +365,15 @@ Website hoạt động ổn định trên DirectAdmin.
 
 ## Layout
 
-- [ ] Main Layout
-- [ ] Header
-- [ ] Navigation
-- [ ] Footer
-- [ ] Responsive Layout
+- [x] Main Layout
+- [x] Header
+- [x] Navigation
+- [x] Footer
+- [x] Responsive Layout
 
 ### Acceptance Criteria
 
-- [ ] Có thể hiển thị giao diện website hoàn chỉnh.
+- [x] Có thể hiển thị giao diện website hoàn chỉnh.
 
 ---
 

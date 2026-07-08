@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>HMCIC · Trang chủ hiện đại</title>
+  <!-- Font Awesome 6 (icon sạch, hiện đại) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0A4F8A;
+      --primary-soft: #0E6BB8;
+      --primary-light: #e6f0f9;
+      --accent: #F97316;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
+      --shadow-card: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+      --shadow-hover: 0 20px 30px -10px rgba(10, 79, 138, 0.08);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --transition: all 0.25s ease;
+      --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--gray-50);
+      color: var(--gray-800);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header sticky */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border-bottom: 1px solid rgba(10,79,138,0.08);
+      transition: var(--transition);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      color: var(--primary);
+    }
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--gray-100);
+      border-radius: 40px;
+      padding: 0 16px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .search-box:focus-within {
+      background: white;
+      border-color: var(--primary-soft);
+      box-shadow: 0 0 0 3px rgba(10,79,138,0.15);
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      padding: 10px 8px;
+      font-size: 0.9rem;
+      outline: none;
+      width: 160px;
+    }
+    .search-box button {
+      background: none;
+      border: none;
+      color: var(--gray-600);
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .btn-login {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--primary-soft);
+      white-space: nowrap;
+    }
+    .btn-login:hover {
+      background: var(--primary);
+      box-shadow: 0 8px 16px rgba(10,79,138,0.2);
+    }
+
+    /* mobile menu toggle (hidden on desktop) */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(105deg, #0A4F8A 0%, #0E6BB8 65%, #0A4F8A 100%);
+      border-radius: var(--radius-lg);
+      margin: 24px 0 40px;
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 280px;
+      height: 280px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero-content {
+      flex: 1 1 400px;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: #f0f4ff;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: white;
+    }
+    .hero-visual {
+      flex: 1 1 280px;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+    .hero-visual i {
+      font-size: 9rem;
+      color: rgba(255,255,255,0.25);
+      filter: drop-shadow(0 12px 12px rgba(0,0,0,0.1));
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i {
+      color: var(--primary);
+      font-size: 2rem;
+    }
+
+    /* tin tức nổi bật */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      margin: 32px 0 48px;
+    }
+    .news-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+    .news-img {
+      height: 220px;
+      background: linear-gradient(135deg, #b0cfe0, #0A4F8A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+    .news-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 30px;
+      width: fit-content;
+    }
+    .news-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+    .news-meta {
+      color: var(--gray-600);
+      font-size: 0.8rem;
+      display: flex;
+      gap: 12px;
+    }
+    .side-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .side-item {
+      background: white;
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      align-items: center;
+    }
+    .side-item:hover {
+      background: #f8fafd;
+    }
+    .side-thumb {
+      width: 70px;
+      height: 70px;
+      background: #e0ecf5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    /* Dịch vụ grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      margin: 32px 0 48px;
+    }
+    .service-card {
+      background: white;
+      padding: 28px 16px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .service-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    /* Thống kê */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 32px 0 48px;
+      justify-content: center;
+    }
+    .stat-card {
+      background: white;
+      flex: 1 1 180px;
+      padding: 28px 16px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* văn bản mới */
+    .doc-list {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .doc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--gray-100);
+      padding-bottom: 12px;
+    }
+    .doc-item:last-child {
+      border-bottom: none;
+    }
+
+    /* đối tác slider */
+    .partner-slider {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      padding: 20px 0 32px;
+      align-items: center;
+      scrollbar-width: thin;
+    }
+    .partner-logo {
+      font-size: 2rem;
+      background: white;
+      padding: 16px 24px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
+      color: var(--gray-600);
+      min-width: 110px;
+      text-align: center;
+    }
+
+    /* footer */
+    .footer {
+      background: var(--gray-900);
+      color: #e5e7eb;
+      padding: 48px 0 24px;
+      margin-top: 60px;
+      border-radius: 40px 40px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 32px;
+    }
+    .footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 40px 24px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-inner {
+        flex-wrap: wrap;
+      }
+      .search-box {
+        order: 1;
+        width: 100%;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-area">
+        <i class="fas fa-building-shield logo-icon"></i>
+        <span>HMCIC</span>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
+        <a href="#"><i class="fas fa-newspaper"></i> Tin tức</a>
+        <a href="#"><i class="fas fa-cubes"></i> Dịch vụ</a>
+        <a href="#"><i class="fas fa-file-alt"></i> Văn bản</a>
+        <a href="#"><i class="fas fa-address-book"></i> Liên hệ</a>
+      </nav>
+
+      <div class="search-box">
+        <input type="search" placeholder="Tìm kiếm dữ liệu..." aria-label="Tìm kiếm">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+
+      <button class="btn-login"><i class="fas fa-user-circle"></i> Đăng nhập</button>
+      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Dữ liệu xây dựng <br>thông minh & minh bạch</h1>
+        <p>Tra cứu hồ sơ, văn bản pháp lý và thông tin ngành xây dựng một cách nhanh chóng, chính xác.</p>
+        <div class="hero-actions">
+          <button class="btn-primary"><i class="fas fa-search"></i> Tra cứu ngay</button>
+          <button class="btn-outline"><i class="fas fa-play-circle"></i> Khám phá</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <i class="fas fa-city"></i>
+      </div>
+    </section>
+
+    <!-- Tin tức nổi bật -->
+    <h2 class="section-title"><i class="fas fa-fire"></i> Tin tức nổi bật</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img"><i class="fas fa-hard-hat"></i></div>
+        <div class="news-body">
+          <span class="badge">Chính sách</span>
+          <div class="news-title">Cập nhật quy chuẩn kỹ thuật quốc gia về an toàn công trình</div>
+          <div class="news-meta"><i class="far fa-calendar-alt"></i> 25/06/2026 · <i class="far fa-eye"></i> 2.4k</div>
+        </div>
+      </div>
+      <div class="side-list">
+        <div class="side-item">
+          <div class="side-thumb"><i class="fas fa-file-contract"></i></div>
+          <div><strong>Hướng dẫn mới về vật liệu xanh</strong><br><small>20/06/2026</small></div>
+        </div>
+        <div class="side-item">
+          <div class="side-thumb"><i class="fas fa-chart-line"></i></div>
+          <div><strong>Thị trường bất động sản quý II</strong><br><small>18/06/2026</small></div>
+        </div>
+        <div class="side-item">
+          <div class="side-thumb"><i class="fas fa-tools"></i></div>
+          <div><strong>Ứng dụng BIM trong quản lý</strong><br><small>15/06/2026</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dịch vụ / Chức năng -->
+    <h2 class="section-title"><i class="fas fa-th-large"></i> Dịch vụ & Chức năng</h2>
+    <div class="services-grid">
+      <div class="service-card"><i class="fas fa-database service-icon"></i><h4>Tra cứu dữ liệu</h4><small>Hồ sơ, chỉ số</small></div>
+      <div class="service-card"><i class="fas fa-hard-hat service-icon"></i><h4>Dữ liệu xây dựng</h4><small>Vật liệu, định mức</small></div>
+      <div class="service-card"><i class="fas fa-newspaper service-icon"></i><h4>Tin tức</h4><small>Cập nhật 24/7</small></div>
+      <div class="service-card"><i class="fas fa-file-pdf service-icon"></i><h4>Văn bản</h4><small>Pháp lý, nghị định</small></div>
+      <div class="service-card"><i class="fas fa-bell service-icon"></i><h4>Thông báo</h4><small>Từ cơ quan</small></div>
+      <div class="service-card"><i class="fas fa-building service-icon"></i><h4>Dịch vụ công</h4><small>Trực tuyến</small></div>
+    </div>
+
+    <!-- Thống kê -->
+    <h2 class="section-title"><i class="fas fa-chart-bar"></i> Thống kê nổi bật</h2>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-number">12,480</div><div>Bài viết</div></div>
+      <div class="stat-card"><div class="stat-number">3,842</div><div>Hồ sơ</div></div>
+      <div class="stat-card"><div class="stat-number">1.2M</div><div>Lượt truy cập</div></div>
+      <div class="stat-card"><div class="stat-number">9,560</div><div>Dữ liệu</div></div>
+    </div>
+
+    <!-- Văn bản mới -->
+    <h2 class="section-title"><i class="fas fa-scroll"></i> Văn bản mới nhất</h2>
+    <div class="doc-list">
+      <div class="doc-item"><span><i class="fas fa-file-alt" style="color:var(--primary); margin-right:10px;"></i> Nghị định 35/2026/NĐ-CP về quản lý dự án</span><span class="badge">Mới</span></div>
+      <div class="doc-item"><span><i class="fas fa-file-alt" style="color:var(--primary); margin-right:10px;"></i> Thông tư 12/2026/TT-BXD hướng dẫn thẩm định</span><span class="badge">Hôm nay</span></div>
+      <div class="doc-item"><span><i class="fas fa-file-alt" style="color:var(--primary); margin-right:10px;"></i> Quyết định 789/QĐ-TTg phê duyệt quy hoạch</span><span class="badge">22/06</span></div>
+      <div class="doc-item"><span><i class="fas fa-file-alt" style="color:var(--primary); margin-right:10px;"></i> Chỉ thị 04/CT-BXD về an toàn lao động</span><span class="badge">20/06</span></div>
+    </div>
+
+    <!-- Đối tác -->
+    <h2 class="section-title"><i class="fas fa-handshake"></i> Đối tác</h2>
+    <div class="partner-slider">
+      <div class="partner-logo"><i class="fas fa-building"></i> BXD</div>
+      <div class="partner-logo"><i class="fas fa-city"></i> VNREA</div>
+      <div class="partner-logo"><i class="fas fa-hard-hat"></i> ACE</div>
+      <div class="partner-logo"><i class="fas fa-drafting-compass"></i> Autodesk</div>
+      <div class="partner-logo"><i class="fas fa-toolbox"></i> Xây dựng 4.0</div>
+      <div class="partner-logo"><i class="fas fa-industry"></i> Bê tông Việt</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3 style="color:white; margin-bottom:12px;"><i class="fas fa-building-shield"></i> HMCIC</h3>
+        <p style="font-size:0.9rem;">Trung tâm thông tin dữ liệu xây dựng · Đơn vị trực thuộc Bộ Xây dựng</p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom:12px;">Liên kết nhanh</h4>
+        <a href="#">Giới thiệu</a><br>
+        <a href="#">Tin tức</a><br>
+        <a href="#">Văn bản pháp luật</a>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom:12px;">Liên hệ</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 37 Lê Đại Hành, Hà Nội</p>
+        <p><i class="fas fa-phone"></i> 0243.976.xxxx</p>
+        <p><i class="fas fa-envelope"></i> info@hmcic.vn</p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom:12px;">Mạng xã hội</h4>
+        <div style="display:flex; gap:16px; font-size:1.4rem;">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:32px; border-top:1px solid #374151; padding-top:20px; text-align:center; font-size:0.85rem;">
+      © 2026 HMCIC. Tất cả quyền được bảo lưu. Thiết kế hiện đại · Giao diện sáng tối sẽ được hỗ trợ.
+    </div>
+  </footer>
+
+  <!-- Skeleton loading placeholder (demo concept) & micro interaction -->
+  <script>
+    // Chỉ hiển thị UI, không xử lý logic backend. Sticky header đã dùng CSS.
+    // Thêm class nhẹ cho animation khi scroll (không cần)
+    console.log('HMCIC UI Redesign 2026 · Sẵn sàng mở rộng dark mode');
+  </script>
+</body>
+</html>

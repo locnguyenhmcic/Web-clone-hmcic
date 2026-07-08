@@ -1,4 +1,10 @@
 ﻿export function SiteFooterLinks() {
-  return <footer>Footer</footer>;
+  return (
+    <footer className="site-shell-footer" aria-label="Footer">
+      <div className="site-shell-container">
+        <p>Public Footer · HMCIC CMS</p>
+      </div>
+    </footer>
+  );
 }
 

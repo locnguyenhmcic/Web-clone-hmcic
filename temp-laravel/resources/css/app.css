@@ -7,3 +7,292 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+:root {
+    --public-ink: #11233a;
+    --public-sky: #1d4f91;
+    --public-sky-strong: #0d2f58;
+    --public-sun: #e97a2a;
+    --public-cloud: #f4f7fb;
+    --public-line: #d5dfeb;
+    --public-panel: #ffffff;
+    --public-font: 'Instrument Sans', 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+}
+
+body {
+    background:
+        radial-gradient(circle at 8% 12%, rgba(233, 122, 42, 0.11), transparent 36%),
+        radial-gradient(circle at 92% 6%, rgba(29, 79, 145, 0.16), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #edf3fb 100%);
+    color: var(--public-ink);
+    font-family: var(--public-font);
+}
+
+.public-container {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.public-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.public-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    border-bottom: 1px solid rgba(13, 47, 88, 0.12);
+    background: rgba(250, 252, 255, 0.94);
+    backdrop-filter: blur(8px);
+}
+
+.public-header-inner {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.public-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--public-sky-strong);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.public-logo-mark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--public-sky), var(--public-sky-strong));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(17, 35, 58, 0.18);
+}
+
+.public-menu-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--public-line);
+    border-radius: 0.75rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.27rem;
+    padding: 0 0.62rem;
+    background: #fff;
+}
+
+.public-menu-toggle span {
+    display: block;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--public-sky-strong);
+}
+
+.public-navigation {
+    border-bottom: 1px solid rgba(13, 47, 88, 0.09);
+    background: linear-gradient(90deg, rgba(13, 47, 88, 0.97), rgba(29, 79, 145, 0.95));
+}
+
+.public-navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.public-navigation a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: rgba(248, 251, 255, 0.92);
+    border-radius: 0.6rem;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.public-navigation a:hover,
+.public-navigation a.is-active {
+    color: #fff;
+    background: rgba(233, 122, 42, 0.9);
+}
+
+.public-main {
+    padding: 2rem 0 3rem;
+    flex: 1;
+}
+
+.public-hero {
+    padding: 2rem;
+    border-radius: 1.25rem;
+    background:
+        radial-gradient(circle at right top, rgba(233, 122, 42, 0.18), transparent 38%),
+        linear-gradient(145deg, rgba(17, 35, 58, 0.98), rgba(29, 79, 145, 0.95));
+    color: #f8fbff;
+    box-shadow: 0 20px 42px rgba(17, 35, 58, 0.2);
+}
+
+.public-hero h1 {
+    margin: 0.5rem 0 0;
+    font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+    line-height: 1.2;
+}
+
+.public-hero p {
+    margin-top: 0.8rem;
+    max-width: 62ch;
+    color: rgba(248, 251, 255, 0.92);
+}
+
+.public-eyebrow {
+    margin: 0;
+    color: #ffd6b7;
+    font-size: 0.86rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.public-foundation-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.public-foundation-grid article,
+.public-status-callout,
+.public-page-intro {
+    border: 1px solid var(--public-line);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--public-panel);
+    box-shadow: 0 10px 30px rgba(17, 35, 58, 0.08);
+}
+
+.public-foundation-grid h2,
+.public-status-callout h2,
+.public-page-intro h1 {
+    margin: 0;
+    color: var(--public-sky-strong);
+}
+
+.public-foundation-grid p,
+.public-status-callout p,
+.public-page-intro p {
+    margin: 0.55rem 0 0;
+    color: #30445c;
+}
+
+.public-status-callout {
+    margin-top: 1rem;
+    background: linear-gradient(160deg, #fff, var(--public-cloud));
+}
+
+.public-status-callout code {
+    display: inline-flex;
+    margin-top: 0.85rem;
+    background: #0e2745;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.79rem;
+    letter-spacing: 0.04em;
+}
+
+.public-footer {
+    margin-top: auto;
+    color: #e4ecf7;
+    background: #0b2038;
+}
+
+.public-footer-grid {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.public-footer h2,
+.public-footer h3 {
+    margin: 0 0 0.7rem;
+    color: #fff;
+}
+
+.public-footer p,
+.public-footer li {
+    margin: 0.35rem 0;
+    color: #d0deef;
+}
+
+.public-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.public-footer a {
+    color: #dce7f5;
+    text-decoration: none;
+}
+
+.public-footer-bottom {
+    border-top: 1px solid rgba(220, 231, 245, 0.14);
+    padding: 0.85rem 0 1rem;
+}
+
+.public-footer-bottom p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #bed1ea;
+}
+
+@media (max-width: 900px) {
+    .public-foundation-grid,
+    .public-footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .public-menu-toggle {
+        display: inline-flex;
+    }
+
+    .public-navigation {
+        display: none;
+    }
+
+    .public-navigation.is-open {
+        display: block;
+    }
+
+    .public-navigation ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0.45rem 0;
+    }
+
+    .public-navigation a {
+        border-radius: 0;
+        min-height: 2.75rem;
+    }
+
+    .public-main {
+        padding: 1.2rem 0 2rem;
+    }
+
+    .public-hero {
+        padding: 1.3rem;
+    }
+}

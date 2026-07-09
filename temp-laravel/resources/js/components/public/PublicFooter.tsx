@@ -4,7 +4,7 @@ export function PublicFooter() {
             <div className="public-container public-footer-grid">
                 <section>
                     <h2>HMCIC</h2>
-                    <p>Public website foundation for CMS-driven content publishing.</p>
+                    <p>Cong thong tin dien tu phuc vu cong bo thong tin chinh thong trong linh vuc xay dung.</p>
                 </section>
 
                 <section>
@@ -20,16 +20,16 @@ export function PublicFooter() {
                 <section>
                     <h3>Contact</h3>
                     <ul>
-                        <li>Email: info@hmcic.local</li>
-                        <li>Phone: (028) 0000 0000</li>
-                        <li>Address: Ho Chi Minh City</li>
+                        <li>Email: hmcic.sxd@tphcm.gov.vn</li>
+                        <li>Phone: (028) 66.81.51.85</li>
+                        <li>Address: 255 Tran Hung Dao, TP.HCM</li>
                     </ul>
                 </section>
             </div>
 
             <div className="public-footer-bottom">
                 <div className="public-container">
-                    <p>Public Footer · HMCIC CMS</p>
+                    <p>Ban quyen © HMCIC. Cong thong tin dien tu Trung tam Quan ly nha va Giam dinh xay dung.</p>
                 </div>
             </div>
         </footer>

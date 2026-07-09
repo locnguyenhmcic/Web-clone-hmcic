@@ -16,8 +16,10 @@ export function PublicWebsiteLayout({ title, children }: PublicWebsiteLayoutProp
     const navItems = useMemo(
         () => [
             { href: '/', label: 'Trang chu' },
+            { href: '/gioi-thieu', label: 'Gioi thieu' },
             { href: '/tin-tuc', label: 'Tin tuc' },
             { href: '/du-an', label: 'Du an' },
+            { href: '/hoi-dap', label: 'Hoi dap' },
             { href: '/lien-he', label: 'Lien he' },
         ],
         [],

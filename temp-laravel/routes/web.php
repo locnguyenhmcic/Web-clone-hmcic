@@ -24,6 +24,12 @@ Route::get('/tin-tuc', function () use ($foundationFlags) {
     ]);
 });
 
+Route::get('/gioi-thieu', function () use ($foundationFlags) {
+    return Inertia::render('IntroductionPage', [
+        'foundation' => $foundationFlags(),
+    ]);
+});
+
 Route::get('/du-an', function () use ($foundationFlags) {
     return Inertia::render('ProjectsIndex', [
         'foundation' => $foundationFlags(),
@@ -32,6 +38,12 @@ Route::get('/du-an', function () use ($foundationFlags) {
 
 Route::get('/lien-he', function () use ($foundationFlags) {
     return Inertia::render('ContactPage', [
+        'foundation' => $foundationFlags(),
+    ]);
+});
+
+Route::get('/hoi-dap', function () use ($foundationFlags) {
+    return Inertia::render('FaqPage', [
         'foundation' => $foundationFlags(),
     ]);
 });

@@ -3,7 +3,7 @@ NIXPACKS_PHP_VERSION = "8.3"
 NIXPACKS_NODE_VERSION = "22"
 
 [phases.setup]
-nixPkgs = ["php83", "nodejs_22", "npm-10_x", "git"]
+nixPkgs = ["php83", "composer", "nodejs_22", "npm-10_x", "git"]
 
 [phases.install]
 cmds = [

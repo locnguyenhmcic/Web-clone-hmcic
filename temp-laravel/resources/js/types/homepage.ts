@@ -16,6 +16,17 @@ export interface NewsItem {
     created_at: string;
 }
 
+export interface NewsCategory {
+    id: number;
+    name: string;
+    slug: string;
+}
+
+export interface NewsDetailItem extends NewsItem {
+    content: string;
+    related_posts: NewsItem[];
+}
+
 export interface ProjectItem {
     id: number;
     title: string;

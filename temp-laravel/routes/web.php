@@ -24,6 +24,13 @@ Route::get('/tin-tuc', function () use ($foundationFlags) {
     ]);
 });
 
+Route::get('/tin-tuc/{slug}', function (string $slug) use ($foundationFlags) {
+    return Inertia::render('NewsDetail', [
+        'foundation' => $foundationFlags(),
+        'slug' => $slug,
+    ]);
+});
+
 Route::get('/gioi-thieu', function () use ($foundationFlags) {
     return Inertia::render('IntroductionPage', [
         'foundation' => $foundationFlags(),

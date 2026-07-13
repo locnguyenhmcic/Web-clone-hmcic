@@ -1,6 +1,8 @@
 import type {
     CollectionResponse,
     FaqItem,
+    NewsCategory,
+    NewsDetailItem,
     NewsItem,
     ProjectItem,
     ServiceItem,
@@ -25,8 +27,32 @@ async function fetchJson<T>(path: string): Promise<T> {
 }
 
 export const publicApi = {
-    getNews: (page = 1, perPage = 8) =>
-        fetchJson<CollectionResponse<NewsItem>>(`/news?page=${page}&per_page=${perPage}`),
+    getNews: (
+        page = 1,
+        perPage = 8,
+        options: { categoryId?: number; search?: string } = {},
+    ) => {
+        const params = new URLSearchParams({
+            page: String(page),
+            per_page: String(perPage),
+        });
+
+        if (options.categoryId) {
+            params.set('category_id', String(options.categoryId));
+        }
+
+        if (options.search && options.search.trim() !== '') {
+            params.set('search', options.search.trim());
+        }
+
+        return fetchJson<CollectionResponse<NewsItem>>(`/news?${params.toString()}`);
+    },
+
+    getNewsCategories: () =>
+        fetchJson<SimpleCollectionResponse<NewsCategory>>('/news/categories'),
+
+    getNewsDetail: (slug: string) =>
+        fetchJson<{ data: NewsDetailItem }>(`/news/${encodeURIComponent(slug)}`),
 
     getProjects: (page = 1, perPage = 8, featured = true) =>
         fetchJson<CollectionResponse<ProjectItem>>(

@@ -406,18 +406,18 @@ Website hoạt động ổn định khi deploy production.
 
 ## News List
 
-- [ ] Danh sách bài viết
-- [ ] Pagination
-- [ ] Category Filter
-- [ ] Search
+- [x] Danh sách bài viết
+- [x] Pagination
+- [x] Category Filter
+- [x] Search
 
 ## News Detail
 
-- [ ] Breadcrumb
-- [ ] Content
-- [ ] Render Image
+- [x] Breadcrumb
+- [x] Content
+- [x] Render Image
 - [ ] Render PDF
-- [ ] Related Posts
+- [x] Related Posts
 
 ---
 

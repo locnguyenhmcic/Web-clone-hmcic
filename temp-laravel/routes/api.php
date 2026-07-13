@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\MediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/categories', [NewsController::class, 'categories']);
+Route::get('/news/{slug}', [NewsController::class, 'show']);
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/services', [ServiceController::class, 'index']);
 Route::get('/faq', [FAQController::class, 'index']);

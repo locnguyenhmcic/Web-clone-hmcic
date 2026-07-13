@@ -29,4 +29,16 @@ class PublicWebsiteFoundationTest extends TestCase
         $this->get('/du-an')->assertOk();
         $this->get('/lien-he')->assertOk();
     }
+
+    public function test_news_detail_route_renders_inertia_page(): void
+    {
+        $response = $this->get('/tin-tuc/bai-viet-mau');
+
+        $response->assertOk();
+        $response->assertInertia(fn (Assert $page): Assert => $page
+            ->component('NewsDetail')
+            ->where('foundation.version', 'public-v1')
+            ->where('slug', 'bai-viet-mau')
+        );
+    }
 }

@@ -379,11 +379,11 @@ Website hoạt động ổn định trên DirectAdmin.
 
 # PHASE 14 - Homepage
 
-- [ ] Hero Banner
-- [ ] Featured News
-- [ ] Latest News
-- [ ] Category Section
-- [ ] Quick Links
+- [x] Hero Banner
+- [x] Featured News
+- [x] Latest News
+- [x] Category Section
+- [x] Quick Links
 
 ---
 

@@ -55,6 +55,31 @@ Database
 
 Business logic tuyệt đối không viết trực tiếp trong Controller hoặc Filament Resource.
 
+## 2.1 Frontend Runtime Ownership
+
+Public Website runtime hiện tại:
+
+- temp-laravel/resources/js/Pages/**
+- Inertia render qua routes/web.php
+
+Frontend experimental:
+
+- frontend/src/**
+
+Lưu ý:
+
+- frontend/src/** không tham gia runtime production ở giai đoạn hiện tại.
+- Mọi thay đổi ảnh hưởng giao diện user đang chạy phải thực hiện tại temp-laravel/resources/js/**.
+
+## 2.2 Deploy-safe Migration Strategy
+
+Chiến lược chuyển đổi sang frontend tách riêng (nếu có) phải theo pha:
+
+1. Align API contract và dữ liệu hiển thị.
+2. Chạy staging song song và so sánh UX/SEO.
+3. UAT + performance + fallback verification.
+4. Cutover theo cửa sổ deploy, có rollback rõ ràng.
+
 ---
 
 # 3. Folder Structure

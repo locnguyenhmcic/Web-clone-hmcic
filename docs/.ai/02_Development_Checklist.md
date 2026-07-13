@@ -65,6 +65,21 @@
 
 ---
 
+# PHASE 2.5 - Frontend Architecture Alignment (Deploy-safe)
+
+* [x] Xác định single runtime cho user-facing website là Inertia pages trong temp-laravel/resources/js/Pages.
+* [x] Ghi rõ frontend/src là experimental, không phải production runtime.
+* [ ] Lập migration checklist theo pha (contract, staging parity, UAT, cutover, rollback).
+* [ ] Thiết lập tiêu chí parity giữa runtime hiện tại và runtime mới (nếu có).
+* [ ] Chốt kế hoạch rollback cho cutover frontend.
+
+### Acceptance Criteria
+
+* [x] Team có tài liệu rõ ràng để tránh sửa nhầm runtime.
+* [ ] Không có thay đổi runtime gây gián đoạn deploy hiện tại.
+
+---
+
 # PHASE 3 - Dashboard
 
 ## Dashboard Widgets

@@ -219,6 +219,22 @@ Mọi dữ liệu đều đến từ Admin CMS.
 
 React chỉ chịu trách nhiệm hiển thị.
 
+---
+
+## Runtime Clarification (Critical)
+
+User-facing runtime hiện tại chạy qua Inertia trong:
+
+- temp-laravel/resources/js/**
+
+Frontend trong:
+
+- frontend/src/**
+
+đang là experimental/preparation, chưa phải production runtime.
+
+Khi nhận yêu cầu chỉnh giao diện đang chạy cho user, ưu tiên sửa ở temp-laravel/resources/js/**.
+
 Business Logic nằm ở Backend.
 
 TipTap JSON phải được render thông qua Renderer.

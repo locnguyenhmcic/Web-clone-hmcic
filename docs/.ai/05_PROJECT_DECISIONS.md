@@ -258,6 +258,46 @@ Không sử dụng Livewire.
 
 ---
 
+# Decision 025
+
+Frontend Runtime Boundary (Deploy-safe)
+
+Nguồn hiển thị cho user ở giai đoạn hiện tại chỉ nằm trong:
+
+temp-laravel/resources/js/**
+
+Route public render bằng Inertia từ routes/web.php.
+
+Thư mục frontend/src/** được giữ ở trạng thái experimental/preparation.
+
+Không được coi frontend/src/** là runtime production cho đến khi có quyết định migration chính thức.
+
+Lý do:
+
+Giữ ổn định tiến trình deploy hiện tại.
+
+Tránh chạy song song 2 frontend runtime gây lệch dữ liệu, lệch UI và sửa nhầm luồng.
+
+---
+
+# Decision 026
+
+Frontend Migration Policy
+
+Nếu chuyển sang frontend tách riêng, phải đi theo từng pha:
+
+1) Song song read-only.
+
+2) So khớp API contract và SEO.
+
+3) Staging/UAT đầy đủ.
+
+4) Cutover có rollback plan.
+
+Không cutover trực tiếp trên production khi chưa hoàn thành đầy đủ checklist.
+
+---
+
 # Decision 020
 
 Content Rendering
@@ -310,8 +350,6 @@ Không hardcode.
 
 Mọi quyết định mới phải được đánh số tiếp theo:
 
-Decision 015
-
-Decision 026
+Decision 027
 
 ...

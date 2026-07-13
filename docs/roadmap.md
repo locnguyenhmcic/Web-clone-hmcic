@@ -9,6 +9,7 @@ Set up a maintainable source structure for a modern Laravel + React project that
 3. Wire API contract for News, Projects, Services.
 4. Create admin CRUD flows.
 5. Prepare staging deployment and smoke tests.
+6. Chốt ranh giới runtime frontend (Inertia production, frontend/src experimental) để deploy an toàn.
 Giai đoạn 1: Admin CMS ✅
 Giai đoạn 2: Public Website 🚧
 Giai đoạn 3: GIS & Quy hoạch

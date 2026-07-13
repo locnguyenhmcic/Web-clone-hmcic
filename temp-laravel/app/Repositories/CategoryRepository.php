@@ -5,19 +5,31 @@ namespace App\Repositories;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Throwable;
 
 class CategoryRepository
 {
     public function allOrdered(): Collection
     {
-        return Cache::remember('categories_list', 3600, function () {
-            return Category::orderBy('name')->get();
-        });
+        try {
+            return Cache::remember('categories_list', 3600, function () {
+                return Category::orderBy('name')->get();
+            });
+        } catch (Throwable $exception) {
+            report($exception);
+
+            return $this->getAllWithoutCache();
+        }
     }
 
     public function getAll(): Collection
     {
         return $this->allOrdered();
+    }
+
+    public function getAllWithoutCache(): Collection
+    {
+        return Category::orderBy('name')->get();
     }
 
     public function create(array $data): Category

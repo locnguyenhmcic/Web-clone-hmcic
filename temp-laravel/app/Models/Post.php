@@ -74,11 +74,24 @@ class Post extends Model
     protected static function booted(): void
     {
         static::saved(function (self $post) {
-            \Illuminate\Support\Facades\Cache::tags('homepage')->flush();
+            static::flushHomepageCache();
         });
 
         static::deleted(function (self $post) {
-            \Illuminate\Support\Facades\Cache::tags('homepage')->flush();
+            static::flushHomepageCache();
         });
+    }
+
+    protected static function flushHomepageCache(): void
+    {
+        $cacheStore = \Illuminate\Support\Facades\Cache::getStore();
+
+        if (method_exists($cacheStore, 'tags')) {
+            \Illuminate\Support\Facades\Cache::tags('homepage')->flush();
+
+            return;
+        }
+
+        \Illuminate\Support\Facades\Cache::forget('homepage_data');
     }
 }

@@ -325,16 +325,16 @@ Website hoạt động ổn định với dữ liệu lớn.
 
 ## Production
 
-* [ ] Storage Link
-* [ ] Queue Worker
-* [ ] Scheduler
-* [ ] Environment Production
-* [ ] SSL
+* [x] Storage Link
+* [x] Queue Worker
+* [x] Scheduler
+* [x] Environment Production
+* [x] SSL
 * [ ] Backup Database
 
 ### Acceptance Criteria
 
-Website hoạt động ổn định trên DirectAdmin.
+Website hoạt động ổn định khi deploy production.
 
 ---
 

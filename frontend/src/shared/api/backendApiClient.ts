@@ -1,6 +1,11 @@
 ﻿import axios from 'axios';
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
+const isLocalApiUrl =
+  configuredApiUrl !== undefined
+  && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(configuredApiUrl);
+
+const API_BASE_URL = (configuredApiUrl && !isLocalApiUrl ? configuredApiUrl : '/api').replace(/\/$/, '');
 
 const client = axios.create({
   baseURL: API_BASE_URL,

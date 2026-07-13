@@ -7,7 +7,12 @@ import type {
     SimpleCollectionResponse,
 } from '../types/homepage';
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
+const isLocalApiUrl =
+    configuredApiUrl !== undefined
+    && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(configuredApiUrl);
+
+const API_BASE_URL = (configuredApiUrl && !isLocalApiUrl ? configuredApiUrl : '/api').replace(/\/$/, '');
 
 async function fetchJson<T>(path: string): Promise<T> {
     const response = await fetch(`${API_BASE_URL}${path}`);

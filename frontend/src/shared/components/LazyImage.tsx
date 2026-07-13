@@ -20,6 +20,19 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   const imgRef = useRef<HTMLImageElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const normalizedSrc = (() => {
+    if (!src) {
+      return src;
+    }
+
+    // Avoid mixed-content blocking when API accidentally returns http URLs on https pages.
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && src.startsWith('http://')) {
+      return `https://${src.slice('http://'.length)}`;
+    }
+
+    return src;
+  })();
+
   useEffect(() => {
     if (!imgRef.current) return;
 
@@ -29,7 +42,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const img = entry.target as HTMLImageElement;
-            img.src = img.dataset.src || src;
+            img.src = img.dataset.src || normalizedSrc;
             setIsLoaded(true);
             observer.unobserve(img);
           }
@@ -41,15 +54,15 @@ export const LazyImage: React.FC<LazyImageProps> = ({
       return () => observer.disconnect();
     } else {
       // Fallback for browsers without IntersectionObserver
-      imgRef.current.src = src;
+      imgRef.current.src = normalizedSrc;
       setIsLoaded(true);
     }
-  }, [src]);
+  }, [normalizedSrc]);
 
   return (
     <img
       ref={imgRef}
-      data-src={src}
+      data-src={normalizedSrc}
       src={placeholder}
       alt={alt}
       width={width}

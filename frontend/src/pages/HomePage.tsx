@@ -6,6 +6,7 @@ import { usePagination } from '@/shared/hooks/usePagination';
 import { PaginationControls } from '@/shared/components/PaginationControls';
 import { ProjectCard } from '@/features/project/components/ProjectCard';
 import { NewsCard } from '@/features/news/components/NewsCard';
+import { LazyImage } from '@/shared/components/LazyImage';
 
 interface Project {
   id: number;
@@ -182,10 +183,12 @@ export function HomePage() {
           ) : featuredNews ? (
             <article className="grid gap-6 lg:grid-cols-[1fr_1.2fr] bg-blue-50 border border-blue-100 rounded-lg p-5">
               {featuredNews.thumbnail_url ? (
-                <img
+                <LazyImage
                   src={featuredNews.thumbnail_url}
                   alt={featuredNews.title}
                   className="w-full h-64 object-cover rounded-md"
+                  width={800}
+                  height={512}
                 />
               ) : (
                 <div className="w-full h-64 rounded-md bg-blue-100" />

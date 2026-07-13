@@ -6,6 +6,15 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ProjectCollection extends ResourceCollection
 {
+    private function thumbnailUrl($request, $path): ?string
+    {
+        if (!$path) {
+            return null;
+        }
+
+        return rtrim($request->getSchemeAndHttpHost(), '/') . '/storage/' . ltrim($path, '/');
+    }
+
     public function toArray($request)
     {
         return [
@@ -15,7 +24,7 @@ class ProjectCollection extends ResourceCollection
                     'title' => $item->title,
                     'slug' => $item->slug,
                     'excerpt' => $item->excerpt,
-                    'thumbnail_url' => $item->thumbnail?->path ? asset('storage/' . $item->thumbnail->path) : null,
+                    'thumbnail_url' => $this->thumbnailUrl(request(), $item->thumbnail?->path),
                     'created_at' => $item->published_at?->format('Y-m-d'),
                     'featured' => $item->featured,
                 ];
